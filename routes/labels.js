@@ -76,8 +76,6 @@ router.post('/:id/rename', function(req, res, next) {
 		return;
 	}
 	labelService.rename(req.params["id"], req.body["newName"]).then(function(renamed) {
-					console.log('renami g....')
-					console.log(renamed);
 					if(renamed == 0) {
 						res.status(404).send("Label not found");
 					} else {

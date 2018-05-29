@@ -76,6 +76,8 @@ db.run("CREATE TABLE IF NOT EXISTS files (id INTEGER PRIMARY KEY, filepath TEXT 
 db.run("CREATE TABLE IF NOT EXISTS labels (id INTEGER PRIMARY KEY, name TEXT UNIQUE NOT NULL)");
 db.run("CREATE TABLE IF NOT EXISTS file_labels (id INTEGER PRIMARY KEY, file_id INTEGER,label_id INTEGER,FOREIGN KEY (file_id) REFERENCES files(id) ON DELETE CASCADE, FOREIGN KEY (label_id) REFERENCES labels(id) ON DELETE CASCADE, UNIQUE(file_id, label_id))");
 db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT NOT NULL)");
+db.run("CREATE TABLE IF NOT EXISTS sentences (id INTEGER PRIMARY KEY, text TEXT NOT NULL)");
+db.run("CREATE TABLE IF NOT EXISTS annotations (id INTEGER PRIMARY KEY, FOREIGN KEY (sentence0_id) REFERENCES sentences(id), FOREIGN KEY (sentence1_id) REFERENCES sentences(id), annotation TEXT not null)");
 
 var knex = require('knex')({
   dialect: 'sqlite3',
@@ -99,11 +101,23 @@ var fileService = require('./services/fileService');
 fileService.init();
 console.log("File service initialization complete.");
 
+var sentenceEmbedderService = require('./services/sentenceEmbedderService');
+console.log("Sentence embedder service initialization complete.");
+
+var sentenceService = require('./services/sentenceService');
+console.log("Sentence service initialization complete.");
+
+var annotationService = require('./services/annotationService');
+console.log("Annotation service initialization complete.");
+
 /************* ROUTES ********/
 
 var index = require('./routes/index');
 var files = require('./routes/files');
 var labels = require('./routes/labels');
+var index = require('./routes/sentences');
+var index = require('./routes/annotations');
+
 
 var app = express();
 

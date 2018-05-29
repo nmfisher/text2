@@ -12,7 +12,7 @@ export class Annotation {
   annotation: number;
   sentencePair: SentencePair;
 
-  constructor(id:string, user:string, annotation:number, sentencePair:SentencePair) {
+  constructor(id:string, annotation:number, user:string, sentencePair:SentencePair) {
     this.id = id;
     this.annotation = annotation;
     this.user = user;

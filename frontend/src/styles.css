@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
 html, body,app-root {
 	font-family:'Roboto';
 	height: 100%;
@@ -18,27 +21,37 @@ html, body,app-root {
 
 
 body {
+  background:#eee;
 	margin:0;
-	}
+}
+
+.container {
+  max-width:960px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.text-wrapper { 
+  background:white;
+  border:1px solid #ccc;
+  border-radius:5px;
+  box-shadow:1px 1px 1px #aaa;
+  padding:15px;
+  margin: 15px;
+}
 
 .header {
-	padding: 15px 0;
-	min-height: 25px;
-	height: 7%;
+  padding:15px;
+	height: auto;
+  color: white;
 }
 
 .header h1, .header h2, .header h3, .header h4 {
 	float:left;
-	margin:5px;
 }
 
 .header h1 {
 	font-size: 18px;
-}
-
-.header label {
-	float:right;
-	margin:5px;
 }
 
 .bg-gray {
@@ -86,29 +99,6 @@ button {
 .btn-lg {
     font-size: 14px;
     padding: 7px;
-}
-
-.btn {
-    background: rgba(255,255,255,255,.5);
-    border: 1px solid white;
-    border-radius:5px;
-    color: #465158
-}
-
-.btn-confirm.active {
-    background: #00670d;   
-    border:none;
-    color: white;
-}
-
-.btn-error.active {
-    background: #8c0100;
-    border:none;
-    color: white;
-}
-
-.bg-danger {
-    color: #333;
 }
 
 .glyphicon-plus {

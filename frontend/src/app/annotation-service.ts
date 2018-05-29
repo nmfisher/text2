@@ -13,7 +13,7 @@ export class AnnotationService {
   constructor(private http:HttpClient) {
   }
 
-  create(annotation:number, sentencePair:SentencePair): Observable<Annotation> {
+  create(annotation:Annotation): Observable<Annotation> {
     return this.http.post<Annotation>(this.url, annotation);
   }
 
