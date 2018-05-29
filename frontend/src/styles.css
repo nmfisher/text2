@@ -1,0 +1,664 @@
+/* You can add global styles to this file, and also import other style files */
+html, body,app-root {
+	font-family:'Roboto';
+	height: 100%;
+	margin:0;
+	overflow: hidden;
+}
+
+.clearfix {
+	clear:both;
+}
+
+
+.labels ul {
+	padding: 0px;
+}
+
+
+
+body {
+	margin:0;
+	}
+
+.header {
+	padding: 15px 0;
+	min-height: 25px;
+	height: 7%;
+}
+
+.header h1, .header h2, .header h3, .header h4 {
+	float:left;
+	margin:5px;
+}
+
+.header h1 {
+	font-size: 18px;
+}
+
+.header label {
+	float:right;
+	margin:5px;
+}
+
+.bg-gray {
+	background: #ccc;
+}
+
+.bg-blue-green {
+	background: #007971;
+	color: white;
+}
+
+.bg-primary {
+	background: #337ab7;
+}
+
+
+h2 {
+    font-size: 16px;
+}
+.content-wrapper {
+	height: 95%;
+    background: #465158;
+	color: white;
+	padding: 25px 15px;
+}
+
+.content-wrapper ul {
+    list-style:none;
+	color: #465158;
+	padding: 7px 15px;
+}
+
+button {
+    box-shadow: none;
+    border: none;
+	cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    font-size: 10px;
+	margin-top:5px;
+    padding: 5px;
+}
+
+
+.btn-lg {
+    font-size: 14px;
+    padding: 7px;
+}
+
+.btn {
+    background: rgba(255,255,255,255,.5);
+    border: 1px solid white;
+    border-radius:5px;
+    color: #465158
+}
+
+.btn-confirm.active {
+    background: #00670d;   
+    border:none;
+    color: white;
+}
+
+.btn-error.active {
+    background: #8c0100;
+    border:none;
+    color: white;
+}
+
+.bg-danger {
+    color: #333;
+}
+
+.glyphicon-plus {
+    cursor:pointer;
+}
+
+.content-wrapper input {
+    margin: 15px;
+}
+
+.labels {
+	padding-bottom: 35px;
+	overflow-y: auto;
+    overflow-x:hidden;
+    height: 100%;
+    width:100%;
+}
+
+.labels .label:hover {
+	color:rgba(200,200,200,1);
+}
+
+.labels li, .files li {
+    cursor:pointer;
+}
+
+.labels .dropdown-menu {
+	background: white;
+	padding:3px 7px;
+	width: 5%;
+	min-width:150px;
+}
+
+.labels .dropdown-menu li {
+	background:white;
+	font-size: 12px;
+	padding: 0px;
+	width: 100%;
+}
+
+.labels .dropdown-menu li a {
+	padding: 0px;
+	text-align: center;
+}
+
+.labels .dropdown-menu li:hover {
+	background:#ccc;
+}
+
+.files {
+	height: 100%;
+	padding-bottom: 50px;
+}
+
+.tab-content, .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+	//background:rgba(255,255,255,0.5);
+    background:#eee
+}
+
+.tab-content, .tab-pane {
+	height: 90%;
+	overflow:hidden;
+    padding: 3px;
+}
+
+.tab-content, .nav-tabs .nav-link.active {
+    border: 1px solid white;
+	font-size: 12px;    
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    font-size: 12px;
+	position:relative;
+	top: 7px;
+    left:0px;
+}
+
+.nav-tabs {
+    border:none;
+}
+
+.nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
+	background:rgba(255,255,255,0.5);
+}
+
+.nav-button {
+    border-radius:0px;
+    background:#ccc;
+    color:#333;
+    position: absolute;
+    top: 23px;
+    right: 15px;
+}
+
+.files {
+	list-style: none;
+	height: 75%;
+	padding: 7px 15px;
+	width: 100%;
+}
+
+.file, .label {
+	color: #465158;
+    cursor: pointer;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+	color: #465158;
+    font-weight: normal;
+	margin: 5px 0;
+	font-size: 14px;
+	text-shadow: none;
+	text-align: left;
+}
+
+.tab-content, .files .active, .labels .active {
+    color: #465158;   
+}
+
+.files li {
+	margin: 7px 0;
+	font-size:12px;
+	overflow:hidden;
+}
+
+.labels li {
+	display:block;
+	width: 100%;
+}
+
+.labels li:hover, .files li:hover, .files span:hover {
+	color: rgba(200,200,200,1);
+	cursor:pointer;
+}
+
+.label.active, .file.active {
+    background: #465158;
+	color: white;
+    
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.context-menu {
+  position: absolute;
+  z-index: 10;
+}
+
+.opacity {
+	position:fixed;
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.6);
+	z-index:1001;
+}
+
+.popup {
+	height:150px;
+	width: 300px;  
+	position:fixed;
+	background:rgba(255,255,255,0.95);
+	box-shadow: 1px 1px 1px black;
+	border-radius:5px;
+	padding: 7px;
+	left:50%;
+	top:25%;
+	z-index:99999;
+}
+
+.error {
+	border:1px solid red;
+}
+
+.confirm-delete {
+	border:1px solid red;
+}
+
+.scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+    width: 4px;
+}
+
+
+.scrollbar::-webkit-scrollbar
+{
+	background-color: #F5F5F5;
+    width: 4px;
+    height: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #aaa;
+    width: 2px;   
+}
+
+.scrollbar-large::-webkit-scrollbar-track, .scrollbar-large::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+.hidden {
+    display:none;
+}
+
+.page-container {
+	min-height:100%;
+	min-width:100%;
+}
+
+.page-container > canvas, .page-container > .textLayer {
+	position:absolute;
+}
+
+.page-container {
+	margin-bottom: 15px;
+}
+
+.textLayer {
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.2;
+  line-height: 1.0;
+}
+
+.textLayer > div {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  -webkit-transform-origin: 0% 0%;
+  -moz-transform-origin: 0% 0%;
+  -o-transform-origin: 0% 0%;
+  -ms-transform-origin: 0% 0%;
+  transform-origin: 0% 0%;
+}
+
+.textLayer .highlight {
+  margin: -1px;
+  padding: 1px;
+
+  background-color: rgb(180, 0, 170);
+  border-radius: 4px;
+}
+
+.textLayer .highlight.begin {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.textLayer .highlight.end {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.textLayer .highlight.middle {
+  border-radius: 0px;
+}
+
+.textLayer .highlight.selected {
+  background-color: rgb(0, 100, 0);
+}
+
+.textLayer ::selection { background: rgb(0,0,255); }
+.textLayer ::-moz-selection { background: rgb(0,0,255); }
+
+.textLayer .endOfContent {
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+  cursor: default;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
+.textLayer .endOfContent.active {
+  top: 0px;
+}
+
+
+.annotationLayer section {
+  position: absolute;
+}
+
+.annotationLayer .linkAnnotation > a {
+  position: absolute;
+  font-size: 1em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.annotationLayer .linkAnnotation > a /* -ms-a */  {
+  background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0 repeat;
+}
+
+.annotationLayer .linkAnnotation > a:hover {
+  opacity: 0.2;
+  background: #ff0;
+  box-shadow: 0px 2px 10px #ff0;
+}
+
+.annotationLayer .textAnnotation img {
+  position: absolute;
+  cursor: pointer;
+}
+
+.annotationLayer .textWidgetAnnotation input,
+.annotationLayer .textWidgetAnnotation textarea,
+.annotationLayer .choiceWidgetAnnotation select,
+.annotationLayer .buttonWidgetAnnotation.checkBox input,
+.annotationLayer .buttonWidgetAnnotation.radioButton input {
+  background-color: rgba(0, 54, 255, 0.13);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  font-size: 9px;
+  height: 100%;
+  padding: 0 3px;
+  vertical-align: top;
+  width: 100%;
+}
+
+.annotationLayer .textWidgetAnnotation textarea {
+  font: message-box;
+  font-size: 9px;
+  resize: none;
+}
+
+.annotationLayer .textWidgetAnnotation input[disabled],
+.annotationLayer .textWidgetAnnotation textarea[disabled],
+.annotationLayer .choiceWidgetAnnotation select[disabled],
+.annotationLayer .buttonWidgetAnnotation.checkBox input[disabled],
+.annotationLayer .buttonWidgetAnnotation.radioButton input[disabled] {
+  background: none;
+  border: 1px solid transparent;
+  cursor: not-allowed;
+}
+
+.annotationLayer .textWidgetAnnotation input:hover,
+.annotationLayer .textWidgetAnnotation textarea:hover,
+.annotationLayer .choiceWidgetAnnotation select:hover,
+.annotationLayer .buttonWidgetAnnotation.checkBox input:hover,
+.annotationLayer .buttonWidgetAnnotation.radioButton input:hover {
+  border: 1px solid #000;
+}
+
+.annotationLayer .textWidgetAnnotation input:focus,
+.annotationLayer .textWidgetAnnotation textarea:focus,
+.annotationLayer .choiceWidgetAnnotation select:focus {
+  background: none;
+  border: 1px solid transparent;
+}
+
+.annotationLayer .textWidgetAnnotation input.comb {
+  font-family: monospace;
+  padding-left: 2px;
+  padding-right: 0;
+}
+
+.annotationLayer .textWidgetAnnotation input.comb:focus {
+  /*
+   * Letter spacing is placed on the right side of each character. Hence, the
+   * letter spacing of the last character may be placed outside the visible
+   * area, causing horizontal scrolling. We avoid this by extending the width
+   * when the element has focus and revert this when it loses focus.
+   */
+  width: 115%;
+}
+
+.annotationLayer .buttonWidgetAnnotation.checkBox input,
+.annotationLayer .buttonWidgetAnnotation.radioButton input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+
+.annotationLayer .popupWrapper {
+  position: absolute;
+  width: 20em;
+}
+
+.annotationLayer .popup {
+  position: absolute;
+  z-index: 200;
+  max-width: 20em;
+  background-color: #FFFF99;
+  box-shadow: 0px 2px 5px #333;
+  border-radius: 2px;
+  padding: 0.6em;
+  margin-left: 5px;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+
+.annotationLayer .popup h1 {
+  font-size: 1em;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 0.2em;
+}
+
+.annotationLayer .popup p {
+  padding-top: 0.2em;
+}
+
+.annotationLayer .highlightAnnotation,
+.annotationLayer .underlineAnnotation,
+.annotationLayer .squigglyAnnotation,
+.annotationLayer .strikeoutAnnotation,
+.annotationLayer .lineAnnotation svg line,
+.annotationLayer .fileAttachmentAnnotation {
+  cursor: pointer;
+}
+
+.pdfViewer .canvasWrapper {
+  overflow: hidden;
+}
+
+.pdfViewer .page {
+  direction: ltr;
+  width: 816px;
+  height: 1056px;
+  margin: 1px auto -8px auto;
+  position: relative;
+  overflow: visible;
+  border: 9px solid transparent;
+  background-clip: content-box;
+  /* border-image: url(images/shadow.png) 9 9 repeat; */
+  background-color: white;
+}
+
+.pdfViewer.removePageBorders .page {
+  margin: 0px auto 10px auto;
+  border: none;
+}
+
+.pdfViewer.singlePageView {
+  display: inline-block;
+}
+
+.pdfViewer.singlePageView .page {
+  margin: 0;
+  border: none;
+}
+
+.pdfViewer .page canvas {
+  margin: 0;
+  display: block;
+}
+
+.pdfViewer .page canvas[hidden] {
+  display: none;
+}
+
+.pdfViewer .page .loadingIcon {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* background: url('images/loading-icon.gif') center no-repeat; */
+}
+
+.pdfPresentationMode:-webkit-full-screen .pdfViewer .page {
+  margin-bottom: 100%;
+  border: 0;
+}
+
+.pdfPresentationMode:-moz-full-screen .pdfViewer .page {
+  margin-bottom: 100%;
+  border: 0;
+}
+
+.pdfPresentationMode:-ms-fullscreen .pdfViewer .page {
+  margin-bottom: 100% !important;
+  border: 0;
+}
+
+.pdfPresentationMode:fullscreen .pdfViewer .page {
+  margin-bottom: 100%;
+  border: 0;
+}
+
+.highlight {
+	background: yellow;
+}

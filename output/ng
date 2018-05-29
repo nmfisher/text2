@@ -1,0 +1,7 @@
+Hash: [1m0aede9af27e57435aac8[39m[22m
+Time: [1m6639[39m[22mms
+chunk    {[1m[33m0[39m[22m} [1m[32mpolyfills.bundle.js, polyfills.bundle.js.map[39m[22m (polyfills) 160 kB {[1m[33m4[39m[22m}[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m1[39m[22m} [1m[32mmain.bundle.js, main.bundle.js.map[39m[22m (main) 5.13 kB {[1m[33m3[39m[22m}[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m2[39m[22m} [1m[32mstyles.bundle.js, styles.bundle.js.map[39m[22m (styles) 10.5 kB {[1m[33m4[39m[22m}[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m3[39m[22m} [1m[32mvendor.bundle.js, vendor.bundle.js.map[39m[22m (vendor) 2.39 MB[1m[33m [initial][39m[22m[1m[32m [rendered][39m[22m
+chunk    {[1m[33m4[39m[22m} [1m[32minline.bundle.js, inline.bundle.js.map[39m[22m (inline) 0 bytes[1m[33m [entry][39m[22m[1m[32m [rendered][39m[22m

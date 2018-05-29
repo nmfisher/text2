@@ -1,0 +1,29 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div *ngIf="popupError" class="popup">
+	Error: {{ popupError }}
+	<button (click)="popupError = null">Dismiss</button>
+</div>
+
+<confirm-view [requestEmitter]="confirmEmitter"/>
+
+<div class="header text-white bg-primary" [class.bg-primary]="" style="text-align:center">
+    <h1>text2</h1>
+    <div style="float:right; width:200px">
+      <label>Mode</label>
+      <select name="mode-select" (change)="setMode($event.target.value)" >
+        <option value="sentence-pairs">Sentence comparison</li>
+        <option value="document-pairs">Document pairs</li>
+      </ul>
+    </div>
+</div>
+
+<div *ngIf="mode == 'sentence_comparison'">
+  Sentence Comparisons
+</div>
+
+ <div *ngIf="mode == 'document_comparison'">
+  Not available.
+</div>
+
