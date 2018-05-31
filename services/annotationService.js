@@ -3,7 +3,9 @@ var create = function(user, annotation, sentence0_id, sentence1_id) {
 			.insert({id:null, user:user, annotation:annotation, sentence0_id: sentence0_id, sentence1_id: sentence1_id})
 			.then(function(id) {
 				return knex('annotations').select('*').where({id:id[0]})
-			});
+			}).catch(function(err) { 
+        console.log(err);
+      });
 }
 
 var del = function(id) {

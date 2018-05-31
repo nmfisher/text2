@@ -16,12 +16,14 @@ router.get('/', function(req, res, next) {
 
 /* Create a single annotation */
 router.post('/', function(req, res, next) {	
-	if(!req.body['user'] || !req.body["annotation"] || !req.body["sentencePair"] || !req.body["sentencePair"]["id"] ) {
+	if(!req.body['user'] || req.body["annotation"] == null || !req.body["sentencePair"] || req.body["sentencePair"]["sentence0"]["id"] == null || req.body["sentencePair"]["sentence1"]["id"] == null) {
 		res.status(500).send("User, annotation value and sentence pair must be specified.");
 		return;
 	}
+
+  console.log(req.body);
 	
-	annotationService.create(req.body['user'],req.body["annotation"],req.body["sentencePair"]["id"]).then(function(annotation) {
+	annotationService.create(req.body['user'],req.body["annotation"],req.body["sentencePair"]["sentence0"]["id"], req.body["sentencePair"]["sentence1"]["id"]).then(function(annotation) {
 		res.status(200).send(annotation);
 	})
 	.catch(function(e) {

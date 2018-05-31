@@ -8,10 +8,10 @@ import 'rxjs/Rx';
 @Injectable()
 export class SentencePairService {
 
-  nextUrl: '/sentence_pairs/next';
-  url: '/sentence_pairs';
-
+  nextUrl:string;  
+  
   constructor(private http:HttpClient) {
+    this.nextUrl = '/sentences/sample';
   }
 
   next(): Observable<SentencePair> {

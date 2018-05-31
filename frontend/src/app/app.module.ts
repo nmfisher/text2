@@ -35,6 +35,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   	NgbModule.forRoot(),
   	BsDropdownModule.forRoot()
   ],
+  providers: [ UserService ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

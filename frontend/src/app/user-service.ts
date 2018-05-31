@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import 'rxjs/Rx';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UserService {
 
   current: string;

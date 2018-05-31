@@ -8,12 +8,15 @@ import 'rxjs/Rx';
 @Injectable()
 export class AnnotationService {
 
-  url: '/annotations';
+  url:string;
 
   constructor(private http:HttpClient) {
+    this.url = "/annotations";
   }
 
   create(annotation:Annotation): Observable<Annotation> {
+    console.log("Creating annotation");
+    console.log(annotation);
     return this.http.post<Annotation>(this.url, annotation);
   }
 

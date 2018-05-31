@@ -27,11 +27,11 @@ export class AppComponent implements OnInit {
     labelService: LabelService;
     annotationService: AnnotationService;
     sentencePairService: SentencePairService;
-    userService: UserService;
+    user:string;
     mode: string;
     modes: string[];
 	
-  	constructor(private http:HttpClient) {  
+  	constructor(private http:HttpClient, private userService:UserService) {  
       this.fileService = new FileService(http);
       this.labelService = new LabelService(http);
       this.annotationService = new AnnotationService(http);
@@ -48,7 +48,11 @@ export class AppComponent implements OnInit {
     }
 
     setUser(user:string): void {
-      this.userService.current = user;
+      this.user = user;
+    }
+    confirmUser(): void {
+      console.log("Setting userService to " + this.user);
+      this.userService.current = this.user;
     }
 }
 

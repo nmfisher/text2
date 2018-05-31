@@ -5,6 +5,9 @@ import { SentencePairService } from './sentence-pair-service';
 import { Annotation } from './annotation';
 import { AnnotationService } from './annotation-service';
 import { UserService } from './user-service';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
+
 
 @Component({
 	selector: 'sentence-comparison-view',
@@ -12,17 +15,15 @@ import { UserService } from './user-service';
 	styleUrls: ['./app.component.css'],
   providers: [ AnnotationService,
                SentencePairService,
-               UserService ]
+                ]
 
 })
 
 export class SentenceComparisonViewComponent {
-	
-  
   sentencePair: SentencePair;
   annotation: Annotation;
-    
-	constructor(private annotationService: AnnotationService, private sentencePairService: SentencePairService, private userService: UserService) { 
+	
+  constructor(private annotationService: AnnotationService, private sentencePairService: SentencePairService, private userService: UserService) { 
 	
 	}
 
@@ -30,32 +31,38 @@ export class SentenceComparisonViewComponent {
      this.next();
   }
 	
-	save(name: string): void {
-    this.annotationService.create(this.annotation);		
-    this.next();
+	save(): void {
+    this.annotationService.create(this.annotation)
+      .catch((err:any) => { return Observable.throw(err); })
+      .subscribe((response: Annotation) => {
+        console.log(response);
+        this.next();
+      });
   }
 		
 	next() : void {
-    //this.sentencePair = this.sentencePairService.next();
-    this.sentencePair = new SentencePair(null, "Sentence 1", "Sentence 2");
-    this.annotation = new Annotation(null, null, this.userService.current, this.sentencePair);
-	}
-
-  onSame() : void {
-    this.annotation.annotation = 1;
+    var user = this.userService.current;
+    console.log(user);
+    this.sentencePairService.next().subscribe((sentencePair: SentencePair) => { 
+      this.sentencePair = sentencePair;
+      this.annotation = new Annotation(null, null, user, this.sentencePair);
+    });
   }
 
-  onPartial() : void {
-    this.annotation.annotation = 0;
-  }
-
-  onDifferent() : void {
+  markDifferent() : void {
+    console.log("different");
     this.annotation.annotation = -1;
+    this.save();
   }
-    
+
+  markPartial() : void {
+    this.annotation.annotation = 0;
+    this.save();
+  }
+
+  markSame() : void {
+    this.annotation.annotation = -1;
+    this.save();
+  }
 }
 
-
-	
-
-	

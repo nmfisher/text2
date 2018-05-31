@@ -1,9 +1,10 @@
 
-function SentenceService(sentenceEmbeddingService) { 
+function SentenceService() { 
 
   this.ids = [];
+  this.min_sentence_length = 10;
 
-  this.get = function(id) { 
+  this.get = function(id) {
     return knex("sentences").where("id","=",id);
   }
 
@@ -18,6 +19,15 @@ function SentenceService(sentenceEmbeddingService) {
   this.list = function() {
   	return knex.select("*").from('sentences');
   }
+
+  this.batchInsert = function(sentences) { 
+    knex.batchInsert("sentences",sentences)
+    .then(function(ids) {
+      console.log("Batch insert complete");
+    }).catch(function(error) { 
+      throw error;
+    });      
+  }
   
   this.seed = function(srcFile, batchSize) { 
   
@@ -25,37 +35,49 @@ function SentenceService(sentenceEmbeddingService) {
     var lineReader = require('readline').createInterface({
       input: require('fs').createReadStream(srcFile)
     });
+    var lineNum = 0;
+    var min_sentence_length = this.min_sentence_length;
   
-    lineReader.on('line', function (line) {
-      var split = line.split("(\.|\n|\t)");
+    var service = this;
+
+    return lineReader.on('line', function (line) {
+      var split = line.split(/(\.)/);
       if(split.length > 0) {
-        for(int i = 0; i < split.length; i++) { 
-          sentences.push({"text":split[i]});  
+        for(var i = 0; i < split.length; i++) { 
+          if(split[i].length > min_sentence_length) {
+              sentences.push({"text":split[i].replace("'","")});  
+                if(sentences.length > batchSize) {
+                  service.batchInsert(sentences);
+                  sentences = [];
+                }
+          }
         }
       }
-  
-      if(sentences.length > batchSize) {
-        knex("sentences").batchInsert(sentences);      
-        sentences = [];
+      if(lineNum % 500 == 0) {
+        console.log("Line " + lineNum + " completed.");
       }
-  
+      lineNum++;
     });
-  
   }
-  
-  this.sample = function() { 
-    if(typeof(this.ids) === "undefined") {
-      this.ids = knex("sentences").select("id");
-    }
-    var rnd_id = this.ids[Math.floor(Math.random() * this.ids.length)];
-    var rnd = this.get(rnd_id);
 
-    var sample_id = require('sentenceEmbeddingService').sampleNearest(rnd_id);
-    var sample = get(sample_id);
-    return { "sentence0" : { "id": rnd_id, "text" : rnd.text },
-              "sentence1" : { "id": sample_id, "text" : sample.text }};
+  this.random = function() { 
+    service = this;
+    var get_random = function() { 
+      var id = service.ids[Math.floor(Math.random() * service.ids.length)];
+      console.log("Returning random sample at id : " + id);
+      return service.get(id);
+    };
+
+    if(typeof(this.ids) === "undefined" || this.ids.length == 0) {
+      console.log("Rebuilding ID index");
+      return knex("sentences").select("id").then(function(res) {
+        service.ids = Object.keys(res);
+        return get_random()
+      });
+    } else {
+      return get_random();
+    }
   }
-  
 }
 
 
